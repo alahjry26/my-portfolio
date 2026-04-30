@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>جامعة صنعاء - الموقع الرسمي</title>
+    <!-- استخدام خط عربي جميل من جوجل -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- رابط أيقونات Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <style>
+        /* إعادة تعيين التنسيقات الأساسية */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Cairo', sans-serif;
+            background-color: #f4f6f9;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* شريط التنقل العلوي */
+        .navbar {
+            background-color: #0a2f44; /* أزرق داكن يمني */
+            color: white;
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo i {
+            font-size: 2.5rem;
+            color: #d4af37; /* ذهبي */
+        }
+
+        .logo-text h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: white;
+            margin: 0;
+        }
+
+        .logo-text span {
+            font-size: 0.9rem;
+            color: #d4af37;
+            display: block;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: color 0.3s;
+            padding: 0.5rem 0;
+            border-bottom: 2px solid transparent;
+        }
+
+        .nav-links a:hover {
+            color: #d4af37;
+            border-bottom: 2px solid #d4af37;
+        }
+
+        /* القسم الرئيسي (Hero) */
+        .hero {
+            background: linear-gradient(135deg, #0a2f44 0%, #1a4b6e 100%);
+            color: white;
+            padding: 4rem 5%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 2rem;
+            min-height: 70vh;
+        }
+
+        .hero-content {
+            flex: 1;
+        }
+
+        .hero-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+            color: #d4af37;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .hero-image {
+            flex: 1;
+            text-align: center;
+        }
+
+        .hero-image i {
+            font-size: 15rem;
+            color: rgba(212, 175, 55, 0.2);
+            text-shadow: 0 10px 20px rgba(0,0,0,0.3);
+        }
+
+        .btn {
+            background-color: #d4af37;
+            color: #0a2f44;
+            padding: 0.8rem 2rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+
+        .btn:hover {
+            background-color: #b8960c;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+        }
+
+        /* قسم الإحصائيات */
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            background-color: white;
+            padding: 2rem 5%;
+            margin: -3rem auto 3rem;
+            width: 80%;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            position: relative;
+            z-index: 10;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 0 1rem;
+        }
+
+        .stat-item i {
+            font-size: 2rem;
+            color: #0a2f44;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-item h3 {
+            font-size: 2rem;
+            color: #0a2f44;
+            font-weight: 700;
+        }
+
+        .stat-item p {
+            color: #666;
+        }
+
+        /* الأقسام العامة */
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            font-size: 2rem;
+            font-weight: 700;
+            color: #0a2f44;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background-color: #d4af37;
+            margin: 0.5rem auto;
+        }
+
+        /* قسم الكليات */
+        .faculties {
+            padding: 4rem 5%;
+            background-color: #fff;
+        }
+
+        .faculties-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .faculty-card {
+            background-color: #f9f9f9;
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 1px solid #eee;
+        }
+
+        .faculty-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+            border-color: #d4af37;
+        }
+
+        .faculty-card i {
+            font-size: 3rem;
+            color: #0a2f44;
+            margin-bottom: 1.5rem;
+        }
+
+        .faculty-card h3 {
+            color: #0a2f44;
+            margin-bottom: 0.5rem;
+        }
+
+        /* قسم الأخبار */
+        .news {
+            padding: 4rem 5%;
+            background-color: #f4f6f9;
+        }
+
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .news-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+        }
+
+        .news-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .news-img {
+            height: 180px;
+            background-color: #0a2f44;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #d4af37;
+            font-size: 3rem;
+        }
+
+        .news-content {
+            padding: 1.5rem;
+        }
+
+        .news-content h3 {
+            color: #0a2f44;
+            margin-bottom: 0.8rem;
+        }
+
+        .news-content .date {
+            color: #888;
+            font-size: 0.85rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .news-content a {
+            color: #d4af37;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        /* الفوتر */
+        .footer {
+            background-color: #0a2f44;
+            color: white;
+            padding: 3rem 5% 1rem;
+            text-align: center;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto 2rem;
+            text-align: right;
+        }
+
+        .footer-section {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .footer-section h3 {
+            color: #d4af37;
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .footer-section p, .footer-section i {
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            justify-content: flex-start;
+        }
+
+        .social-icons i {
+            font-size: 1.5rem;
+            margin-left: 1rem;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .social-icons i:hover {
+            color: #d4af37;
+        }
+
+        .copyright {
+            border-top: 1px solid rgba(255,255,255,0.2);
+            padding-top: 1rem;
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        /* تحسينات للجوال */
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            .nav-links {
+                gap: 1rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            .hero {
+                flex-direction: column;
+                text-align: center;
+            }
+            .hero-image i {
+                font-size: 10rem;
+            }
+            .stats {
+                width: 95%;
+                margin-top: -2rem;
+            }
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            .footer-section p {
+                justify-content: center;
+            }
+        }
+
+        /* زر العودة للأعلى */
+        #backToTop {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            background-color: #0a2f44;
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            transition: background 0.3s;
+            z-index: 999;
+            border: none;
+            font-size: 1.2rem;
+        }
+
+        #backToTop:hover {
+            background-color: #d4af37;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- شريط التنقل -->
+    <nav class="navbar">
+        <div class="logo">
+            <i class="fas fa-university"></i>
+            <div class="logo-text">
+                <h1>جامعة صنعاء</h1>
+                <span>Sana'a University</span>
+            </div>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#">الرئيسية</a></li>
+            <li><a href="#faculties">الكليات</a></li>
+            <li><a href="#news">الأخبار</a></li>
+            <li><a href="#">القبول والتسجيل</a></li>
+            <li><a href="#contact">اتصل بنا</a></li>
+        </ul>
+    </nav>
+
+    <!-- القسم الرئيسي -->
+    <section class="hero">
+        <div class="hero-content">
+            <h2>أول جامعة يمنية .. صرح العلم والمعرفة</h2>
+            <p>تأسست جامعة صنعاء عام 1970 كأول جامعة في اليمن، وتضم اليوم أكثر من 20 كلية ومركزاً بحثياً، وتستقبل آلاف الطلاب من مختلف المحافظات.</p>
+            <a href="#" class="btn">تقديم طلب التحاق <i class="fas fa-arrow-left"></i></a>
+        </div>
+        <div class="hero-image">
+            <!-- أيقونة تمثل مبنى الجامعة أو القبة -->
+            <i class="fas fa-landmark"></i>
+        </div>
+    </section>
+
+    <!-- شريط الإحصائيات -->
+    <div class="stats">
+        <div class="stat-item">
+            <i class="fas fa-user-graduate"></i>
+            <h3>+80,000</h3>
+            <p>طالب وطالبة</p>
+        </div>
+        <div class="stat-item">
+            <i class="fas fa-chalkboard-teacher"></i>
+            <h3>+2,000</h3>
+            <p>عضو هيئة تدريس</p>
+        </div>
+        <div class="stat-item">
+            <i class="fas fa-building"></i>
+            <h3>22</h3>
+            <p>كلية</p>
+        </div>
+        <div class="stat-item">
+            <i class="fas fa-award"></i>
+            <h3>54</h3>
+            <p>عاماً من العطاء</p>
+        </div>
+    </div>
+
+    <!-- قسم الكليات -->
+    <section class="faculties" id="faculties">
+        <h2 class="section-title">كليات الجامعة</h2>
+        <div class="faculties-grid">
+            <div class="faculty-card">
+                <i class="fas fa-laptop-code"></i>
+                <h3>كلية الحاسوب وتكنولوجيا المعلومات</h3>
+                <p>برامج البكالوريوس والماجستير في علوم الحاسوب والذكاء الاصطناعي</p>
+            </div>
+            <div class="faculty-card">
+                <i class="fas fa-heartbeat"></i>
+                <h3>كلية الطب والعلوم الصحية</h3>
+                <p>تضم الطب البشري، الصيدلة، طب الأسنان، والتمريض</p>
+            </div>
+            <div class="faculty-card">
+                <i class="fas fa-cogs"></i>
+                <h3>كلية الهندسة</h3>
+                <p>هندسة مدنية، معمارية، كهربائية، ميكانيكية وبترول</p>
+            </div>
+            <div class="faculty-card">
+                <i class="fas fa-balance-scale"></i>
+                <h3>كلية التجارة والاقتصاد</h3>
+                <p>محاسبة، إدارة أعمال، علوم مالية ومصرفية</p>
+            </div>
+            <div class="faculty-card">
+                <i class="fas fa-book-open"></i>
+                <h3>كلية الآداب والعلوم الإنسانية</h3>
+                <p>اللغة العربية، الإنجليزية، التاريخ، الجغرافيا والفلسفة</p>
+            </div>
+            <div class="faculty-card">
+                <i class="fas fa-flask"></i>
+                <h3>كلية العلوم</h3>
+                <p>الفيزياء، الكيمياء، الرياضيات، علوم الحياة والأرض</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم الأخبار -->
+    <section class="news" id="news">
+        <h2 class="section-title">آخر الأخبار والفعاليات</h2>
+        <div class="news-grid">
+            <div class="news-card">
+                <div class="news-img">
+                    <i class="fas fa-calendar-check"></i>
+                </div>
+                <div class="news-content">
+                    <p class="date">15 مايو 2024</p>
+                    <h3>بدء التسجيل للفصل الدراسي الصيفي</h3>
+                    <p>أعلنت عمادة القبول والتسجيل عن فتح باب التسجيل للفصل الصيفي للعام الجامعي 2023-2024.</p>
+                    <a href="#">اقرأ المزيد <i class="fas fa-arrow-left"></i></a>
+                </div>
+            </div>
+            <div class="news-card">
+                <div class="news-img">
+                    <i class="fas fa-trophy"></i>
+                </div>
+                <div class="news-content">
+                    <p class="date">2 مايو 2024</p>
+                    <h3>فوز جامعة صنعاء بجائزة البحث العلمي</h3>
+                    <p>حصل فريق بحثي من كلية الهندسة على المركز الأول في مؤتمر الابتكارات الهندسية.</p>
+                    <a href="#">اقرأ المزيد <i class="fas fa-arrow-left"></i></a>
+                </div>
+            </div>
+            <div class="news-card">
+                <div class="news-img">
+                    <i class="fas fa-handshake"></i>
+                </div>
+                <div class="news-content">
+                    <p class="date">20 أبريل 2024</p>
+                    <h3>توقيع اتفاقية تعاون مع جامعات دولية</h3>
+                    <p>وقعت الجامعة مذكرة تفاهم للتبادل الأكاديمي مع عدة جامعات عربية وأوروبية.</p>
+                    <a href="#">اقرأ المزيد <i class="fas fa-arrow-left"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- الفوتر -->
+    <footer class="footer" id="contact">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>روابط سريعة</h3>
+                <p><i class="fas fa-chevron-left"></i> البوابة الإلكترونية</p>
+                <p><i class="fas fa-chevron-left"></i> نظام الشؤون الأكاديمية</p>
+                <p><i class="fas fa-chevron-left"></i> المكتبة المركزية</p>
+                <p><i class="fas fa-chevron-left"></i> نتائج الامتحانات</p>
+            </div>
+            <div class="footer-section">
+                <h3>معلومات التواصل</h3>
+                <p><i class="fas fa-map-marker-alt"></i> شارع عمران، الأمانة، صنعاء، اليمن</p>
+                <p><i class="fas fa-phone"></i> 00967-1-123456</p>
+                <p><i class="fas fa-envelope"></i> info@su.edu.ye</p>
+                <p><i class="fas fa-clock"></i> الأحد - الخميس: 8 ص - 4 م</p>
+            </div>
+            <div class="footer-section">
+                <h3>تابعنا على</h3>
+                <div class="social-icons">
+                    <i class="fab fa-facebook-f"></i>
+                    <i class="fab fa-twitter"></i>
+                    <i class="fab fa-youtube"></i>
+                    <i class="fab fa-telegram-plane"></i>
+                </div>
+                <p style="margin-top: 1rem;">جميع الحقوق محفوظة © 2024 جامعة صنعاء</p>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>تم التصميم بواسطة طلاب جامعة صنعاء - كلية الحاسوب</p>
+        </div>
+    </footer>
+
+    <!-- زر العودة للأعلى -->
+    <button id="backToTop" title="العودة للأعلى">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- سكربت بسيط لزر العودة للأعلى -->
+    <script>
+        // إظهار وإخفاء زر العودة للأعلى
+        window.onscroll = function() {
+            var btn = document.getElementById("backToTop");
+            if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+                btn.style.display = "flex";
+            } else {
+                btn.style.display = "none";
+            }
+        };
+
+        // التمرير للأعلى عند النقر
+        document.getElementById("backToTop").addEventListener("click", function(){
+            window.scrollTo({top: 0, behavior: 'smooth'});
+        });
+
+        // إخفاء الزر افتراضياً عند تحميل الصفحة
+        document.getElementById("backToTop").style.display = "none";
+    </script>
+</body>
+</html>
